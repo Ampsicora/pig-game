@@ -21,32 +21,35 @@ function generateRandomNumber (maxNumber = 6)
     return Math.floor((Math.random() * maxNumber) + 1);
 }
 
-function isWinner(playerScore, scoreGoal = 10)
+function isWinner(playerScore, scoreGoal = 100)
 {
     return (Number(playerScore.textContent) >= scoreGoal) ? playerScore.textContent = `${scoreGoal}` : false;
 }
 
 function switchPlayer (player, playerScore, otherPlayer)
 {
-    diceNumber = 0;
     playerScore.textContent = 0;
+    diceNumber              = 0;
     player.classList.remove('player--active');
     otherPlayer.classList.add('player--active');
 }
 
 function endGame(feedbackDOM, feedbackMessage = `You won! 🎉🎉🎉`)
 {
-    feedbackDOM.textContent = feedbackMessage
-    btnRollDice.disabled = true;
-    btnHoldScore.disabled = true;
+    feedbackDOM.textContent = feedbackMessage;
+    btnRollDice.disabled    = true;
+    btnHoldScore.disabled   = true;
 }
 
 function newGame()
 {
-    holdScorePlayer1.textContent = 0;
-    holdScorePlayer2.textContent = 0;
-    btnRollDice.disabled = false;
-    btnHoldScore.disabled = false;
+    switchPlayer(player2, currentScorePlayer2, player1);
+    feedbackPlayer1.textContent     = "";
+    feedbackPlayer2.textContent     = "";
+    holdScorePlayer1.textContent    = 0;
+    holdScorePlayer2.textContent    = 0;
+    btnRollDice.disabled            = false;
+    btnHoldScore.disabled           = false;
 }
 
 function holdScore()
@@ -72,8 +75,8 @@ function rollDice ()
     dice.src = `./imgs/dice-${diceNumber}.png`;
     
     // Set player current score to 0 if dice number is 1
-    if (dice.src === `${location.protocol}//${location.hostname}/imgs/dice-1.png`)
-        return (player1.classList.contains('player--active')) ? switchPlayer(player1, currentScorePlayer1, player2) : switchPlayer(player2, currentScorePlayer2, player1)
+    if (dice.src === `${location.protocol}//${location.hostname}:5500/imgs/dice-1.png`)
+        return (player1.classList.contains('player--active')) ? switchPlayer(player1, currentScorePlayer1, player2) : switchPlayer(player2, currentScorePlayer2, player1);
 
     else
         // Update current player score
