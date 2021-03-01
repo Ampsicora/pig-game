@@ -74,8 +74,8 @@ function rollDice ()
     // Change dice image
     dice.src = `./imgs/dice-${diceNumber}.png`;
     
-    // Set player current score to 0 if dice number is 1
-    if (dice.src === `${location.protocol}//${location.hostname}/imgs/dice-1.png`)
+    // If dice number is 1 set player current score to 0
+    if (diceNumber === 1)
         return (player1.classList.contains('player--active')) ? switchPlayer(player1, currentScorePlayer1, player2) : switchPlayer(player2, currentScorePlayer2, player1);
 
     else
