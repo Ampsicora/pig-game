@@ -30,7 +30,7 @@ function switchPlayer ()
 {
     currentScorePlayer1.textContent = 0;
     currentScorePlayer2.textContent = 0;
-    diceNumber              = 0;
+    diceNumber                      = 0;
     player1.classList.toggle('player--active');
     player2.classList.toggle('player--active');
 }
