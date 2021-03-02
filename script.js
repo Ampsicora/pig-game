@@ -26,12 +26,13 @@ function isWinner(playerScore, scoreGoal = 100)
     return (Number(playerScore.textContent) >= scoreGoal) ? playerScore.textContent = `${scoreGoal}` : false;
 }
 
-function switchPlayer (player, playerScore, otherPlayer)
+function switchPlayer ()
 {
-    playerScore.textContent = 0;
+    currentScorePlayer1.textContent = 0;
+    currentScorePlayer2.textContent = 0;
     diceNumber              = 0;
-    player.classList.remove('player--active');
-    otherPlayer.classList.add('player--active');
+    player1.classList.toggle('player--active');
+    player2.classList.toggle('player--active');
 }
 
 function endGame(feedbackDOM, feedbackMessage = `You won! 🎉🎉🎉`)
@@ -57,13 +58,13 @@ function holdScore()
     if (player1.classList.contains('player--active'))
     {
         holdScorePlayer1.textContent = String(Number(holdScorePlayer1.textContent) + diceNumber);
-        isWinner(holdScorePlayer1) ? endGame(feedbackPlayer1) : switchPlayer(player1, currentScorePlayer1, player2);
+        isWinner(holdScorePlayer1) ? endGame(feedbackPlayer1) : switchPlayer();
     }
     
     else
     {
         holdScorePlayer2.textContent = String(Number(holdScorePlayer2.textContent) + diceNumber);
-        isWinner(holdScorePlayer2) ? endGame(feedbackPlayer2) : switchPlayer(player2, currentScorePlayer2, player1);
+        isWinner(holdScorePlayer2) ? endGame(feedbackPlayer2) : switchPlayer();
     }
 }
 
