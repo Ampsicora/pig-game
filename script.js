@@ -77,7 +77,7 @@ function rollDice ()
     
     // If dice number is 1 set player current score to 0
     if (diceNumber === 1)
-        return (player1.classList.contains('player--active')) ? switchPlayer(player1, currentScorePlayer1, player2) : switchPlayer(player2, currentScorePlayer2, player1);
+        return (player1.classList.contains('player--active')) ? switchPlayer() : switchPlayer();
 
     else
         // Update current player score
